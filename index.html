@@ -14,7 +14,7 @@
         .svg-preview { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #fafafa; border: 1px solid #eee; margin-bottom: 0.5rem; }
         .svg-preview object { width: 90%; height: 180px; } */
 
-        body {
+ body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
   margin: 0;
@@ -26,32 +26,48 @@ h1 {
   color: #fff;
   margin: 0;
   padding: 1rem;
+  text-align: center;
 }
 
 .gallery {
   display: flex;
-  flex-direction: column;  /* stack vertically */
-  gap: 2rem;              /* space between cards */
+  flex-direction: column;
+  gap: 2rem;
   padding: 2rem;
+  max-width: 800px; /* make it less tiring to read */
+  margin: 0 auto;   /* center the gallery on the page */
 }
 
 .item {
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 1rem;
-  width: 100%;            /* full width */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2rem;
+  width: 100%;
+  min-height: 300px; /* taller cards */
   box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .item h2 {
-  font-size: 1.1rem;
-  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  text-align: center; /* center the title */
+  color: #333;
 }
 
 .item a {
+  display: block;
+  text-align: center;
   text-decoration: none;
   color: #007acc;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 
 .svg-preview {
@@ -62,7 +78,8 @@ h1 {
   justify-content: center;
   background: #fafafa;
   border: 1px solid #eee;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
 }
 
 .svg-preview object {
