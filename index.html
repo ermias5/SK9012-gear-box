@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        h1 { background: #222; color: #fff; margin: 0; padding: 1rem; }
+        .gallery { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem; }
+        .item { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 1rem; width: 320px; }
+        .item h2 { font-size: 1.1rem; margin: 0 0 0.5rem 0; }
+        .item a { text-decoration: none; color: #007acc; }
+        .svg-preview { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #fafafa; border: 1px solid #eee; margin-bottom: 0.5rem; }
+        .svg-preview object { width: 90%; height: 180px; }
+    </style>
+</head>
+<body>
+    <h1>SVG Gallery</h1>
+    <div class="gallery">
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="ANIMATION.svg"></object>
+            </div>
+            <h2><a href="ANIMATION.svg" target="_blank">ANIMATION.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="BEVEL.svg"></object>
+            </div>
+            <h2><a href="BEVEL.svg" target="_blank">BEVEL.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="BOM.svg"></object>
+            </div>
+            <h2><a href="BOM.svg" target="_blank">BOM.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="GEARBOXSECTIONS.svg"></object>
+            </div>
+            <h2><a href="GEARBOXSECTIONS.svg" target="_blank">GEARBOXSECTIONS.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="HOME.svg"></object>
+            </div>
+            <h2><a href="HOME.svg" target="_blank">HOME.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="INPUTSHAFT.svg"></object>
+            </div>
+            <h2><a href="INPUTSHAFT.svg" target="_blank">INPUTSHAFT.svg</a></h2>
+        </div>
+        <div class="item">
+            <div class="svg-preview">
+                <object type="image/svg+xml" data="OUTPUTGEAR.svg"></object>
+            </div>
+            <h2><a href="OUTPUTGEAR.svg" target="_blank">OUTPUTGEAR.svg</a></h2>
+        </div>
+    </div>
+</body>
+</html>
