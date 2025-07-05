@@ -5,139 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVG Gallery</title>
     <style>
-        /* body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-        h1 { background: #222; color: #fff; margin: 0; padding: 1rem; }
-        .gallery { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem; }
-        .item { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 1rem; width: 320px; }
-        .item h2 { font-size: 1.1rem; margin: 0 0 0.5rem 0; }
-        .item a { text-decoration: none; color: #007acc; }
-        .svg-preview { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #fafafa; border: 1px solid #eee; margin-bottom: 0.5rem; }
-        .svg-preview object { width: 90%; height: 180px; } */
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
+        body {
+          font-family: Arial, sans-serif;
+          background: #f4f4f4;
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+        }
 
-h1 {
-  background: #222;
-  color: #fff;
-  margin: 0;
-  padding: 1rem;
-  text-align: center;
-}
+        h1 {
+          background: #222;
+          color: #fff;
+          margin: 0;
+          padding: 1rem;
+          text-align: center;
+        }
 
-.gallery {
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: stretch;   /* stretch card vertically */
-  padding: 2rem;
-  height: calc(100vh - 70px); /* full height minus header (~70px) */
-  box-sizing: border-box;
-}
+        .main-card {
+          background: #fff;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          padding: 2rem;
+          width: 75%;
+          margin: 2rem auto 1rem auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
-.item {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 2rem;
-  width: 600px;             /* moderate width */
-  height: 100%;             /* full gallery height */
-  box-sizing: border-box;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  /* center content vertically */
-}
+        .main-preview {
+          width: 100%;
+          max-width: 800px;
+          height: 60vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fafafa;
+          border: 1px solid #eee;
+          margin-bottom: 1rem;
+          border-radius: 8px;
+        }
 
-.item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
+        .main-preview object {
+          width: 100%;
+          height: 100%;
+        }
 
-.item h2 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
-  text-align: center;
-  color: #333;
-}
+        .main-title {
+          font-size: 2rem;
+          margin: 1rem 0 0.5rem 0;
+          text-align: center;
+          color: #333;
+        }
 
-.item a {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: #007acc;
-  font-weight: bold;
-  margin-top: 1rem;
-}
+        .thumbnails {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.5rem;
+          margin: 2rem auto;
+          max-width: 1200px;
+        }
 
-.svg-preview {
-  width: 100%;
-  flex: 1; /* fill available vertical space */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fafafa;
-  border: 1px solid #eee;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-}
+        .thumb {
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          padding: 0.5rem;
+          width: 140px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-.svg-preview object {
-  width: 90%;
-  height: 90%;
-}
+        .thumb:hover {
+          transform: translateY(-4px) scale(1.04);
+          box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
 
+        .thumb-preview {
+          width: 120px;
+          height: 90px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fafafa;
+          border: 1px solid #eee;
+          border-radius: 4px;
+          margin-bottom: 0.5rem;
+        }
 
+        .thumb-preview object {
+          width: 100%;
+          height: 100%;
+        }
+
+        .thumb-title {
+          font-size: 1rem;
+          text-align: center;
+          color: #007acc;
+          text-decoration: none;
+          margin: 0;
+        }
     </style>
 </head>
 <body>
     <h1>SVG Gallery</h1>
-    <div class="gallery">
-        <div class="item">
-            <div class="svg-preview">
-                <object type="image/svg+xml" data="HOME.svg"></object>
-            </div>
-            <h2><a href="HOME.svg" target="_blank">HOME.svg</a></h2>
+    <div class="main-card">
+        <div class="main-preview">
+            <object type="image/svg+xml" data="HOME.svg"></object>
         </div>
-        <div class="item">
-            <div class="svg-preview">
+        <div class="main-title">HOME.svg</div>
+    </div>
+    <div class="thumbnails">
+        <a class="thumb" href="INPUTSHAFT.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="INPUTSHAFT.svg"></object>
             </div>
-            <h2><a href="INPUTSHAFT.svg" target="_blank">INPUTSHAFT.svg</a></h2>
-        </div>
-        <div class="item">
-            <div class="svg-preview">
+            <div class="thumb-title">INPUTSHAFT.svg</div>
+        </a>
+        <a class="thumb" href="OUTPUTGEAR.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="OUTPUTGEAR.svg"></object>
             </div>
-            <h2><a href="OUTPUTGEAR.svg" target="_blank">OUTPUTGEAR.svg</a></h2>
-        </div>
-         <div class="item">
-            <div class="svg-preview">
+            <div class="thumb-title">OUTPUTGEAR.svg</div>
+        </a>
+        <a class="thumb" href="ANIMATION.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="ANIMATION.svg"></object>
             </div>
-            <h2><a href="ANIMATION.svg" target="_blank">ANIMATION.svg</a></h2>
-        </div>
-           <div class="item">
-            <div class="svg-preview">
+            <div class="thumb-title">ANIMATION.svg</div>
+        </a>
+        <a class="thumb" href="BEVEL.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="BEVEL.svg"></object>
             </div>
-            <h2><a href="BEVEL.svg" target="_blank">BEVEL.svg</a></h2>
-        </div>
-        <div class="item">
-            <div class="svg-preview">
+            <div class="thumb-title">BEVEL.svg</div>
+        </a>
+        <a class="thumb" href="BOM.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="BOM.svg"></object>
             </div>
-            <h2><a href="BOM.svg" target="_blank">BOM.svg</a></h2>
-        </div>
-        <div class="item">
-            <div class="svg-preview">
+            <div class="thumb-title">BOM.svg</div>
+        </a>
+        <a class="thumb" href="GEARBOXSECTIONS.svg" target="_blank">
+            <div class="thumb-preview">
                 <object type="image/svg+xml" data="GEARBOXSECTIONS.svg"></object>
             </div>
-            <h2><a href="GEARBOXSECTIONS.svg" target="_blank">GEARBOXSECTIONS.svg</a></h2>
-        </div>
+            <div class="thumb-title">GEARBOXSECTIONS.svg</div>
+        </a>
     </div>
 </body>
 </html>
