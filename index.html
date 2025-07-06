@@ -77,6 +77,8 @@
           flex-direction: column;
           align-items: center;
           transition: transform 0.2s, box-shadow 0.2s;
+          border: none;
+          cursor: pointer;
         }
 
         .thumb:hover {
@@ -113,48 +115,54 @@
 <body>
     <h1>SVG Gallery</h1>
     <div class="main-card">
-        <div class="main-preview">
-            <object type="image/svg+xml" data="HOME.svg"></object>
+        <div class="main-preview" id="mainPreview">
+            <object id="mainObject" type="image/svg+xml" data="HOME.svg"></object>
         </div>
         <!-- <div class="main-title">product details</div> -->
     </div>
-    <div class="thumbnails">
-        <a class="thumb" href="INPUTSHAFT.svg" target="_blank">
+    <!-- <div class="thumbnails">
+        <button class="thumb" onclick="swapSVG('INPUTSHAFT.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="INPUTSHAFT.svg"></object>
             </div>
             <div class="thumb-title">INPUTSHAFT.svg</div>
-        </a>
-        <a class="thumb" href="OUTPUTGEAR.svg" target="_blank">
+        </button>
+        <button class="thumb" onclick="swapSVG('OUTPUTGEAR.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="OUTPUTGEAR.svg"></object>
             </div>
             <div class="thumb-title">OUTPUTGEAR.svg</div>
-        </a>
-        <a class="thumb" href="ANIMATION.svg" target="_blank">
+        </button>
+        <button class="thumb" onclick="swapSVG('ANIMATION.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="ANIMATION.svg"></object>
             </div>
             <div class="thumb-title">ANIMATION.svg</div>
-        </a>
-        <a class="thumb" href="BEVEL.svg" target="_blank">
+        </button>
+        <button class="thumb" onclick="swapSVG('BEVEL.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="BEVEL.svg"></object>
             </div>
             <div class="thumb-title">BEVEL.svg</div>
-        </a>
-        <a class="thumb" href="BOM.svg" target="_blank">
+        </button>
+        <button class="thumb" onclick="swapSVG('BOM.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="BOM.svg"></object>
             </div>
             <div class="thumb-title">BOM.svg</div>
-        </a>
-        <a class="thumb" href="GEARBOXSECTIONS.svg" target="_blank">
+        </button>
+        <button class="thumb" onclick="swapSVG('GEARBOXSECTIONS.svg')">
             <div class="thumb-preview">
                 <object type="image/svg+xml" data="GEARBOXSECTIONS.svg"></object>
             </div>
             <div class="thumb-title">GEARBOXSECTIONS.svg</div>
-        </a>
-    </div>
+        </button>
+    </div> -->
+    <script>
+      function swapSVG(svgFile) {
+        const mainObject = document.getElementById('mainObject');
+        mainObject.setAttribute('data', svgFile);
+      }
+    </script>
 </body>
 </html>
