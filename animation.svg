@@ -193,32 +193,39 @@ function ShowPaper()
 				<foreignObject x="43.74" y="46.7" width="200" height="125"
 					requiredExtensions="http://www.w3.org/1999/xhtml">
 
-					<body xmlns="http://www.w3.org/1999/xhtml"
-						style="margin:0;padding:0;width:100%;height:100%;overflow:hidden;">
-						<iframe width="100%" height="100%" style="border:none;"
-							src="https://www.youtube.com/embed/DxZ9Q0JHALE?modestbranding=1&amp;rel=0&amp;autohide=1"
-							allowfullscreen="allowfullscreen"></iframe>
+					<body xmlns="http://www.w3.org/1999/xhtml" style="
+          width:100%;
+          height:100%;
+          margin:0;
+          padding:0;
+          background:white;
+        ">
+
+						<div style="
+          width:100%;
+          height:100%;
+          border-radius:12px;
+          overflow:hidden;
+        ">
+							<iframe width="100%" height="100%" style="border:none;"
+								src="https://www.youtube.com/embed/DxZ9Q0JHALE?modestbranding=1&amp;rel=0&amp;autohide=1"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+								allowfullscreen="true"><a href="https://www.youtube.com/watch?v=DxZ9Q0JHALE"
+									target="_blank">Watch video</a>
+							</iframe>
+
+						</div>
+
 					</body>
 				</foreignObject>
-
 			</g>
 		</g>
-		<g id="paperID" visibility="hidden" opacity="0.00" transform="scale(0.000100)">
-			<path style="stroke:#000000;stroke-width:0.500;fill:#e6e6e6;fill-rule:evenodd"
-				d="M-2000.00,-2000.00L2297.00,-2000.00L2297.00,2210.00L-2000.00,2210.00zM0.00,0.00L297.00,0.00L297.00,210.00L0.00,210.00z" />
-			<path style="fill:#000000;fill-opacity:0.118"
-				d="M3.00,210.00L297.00,210.00L297.00,3.00L300.00,3.00L300.00,213.00L3.00,213.00z" />
-		</g>
+
 		<g id="hotspot.0" ident="" onmouseover="ShowHotSpot(evt,&apos;0&apos;)"
 			onmouseout="HideHotSpot(evt,&apos;0&apos;)" onmousemove="ShowToolTip(evt,&apos;0&apos;,&quot;ICON&quot;)"
 			opacity="0"><a xlink:href="home.svg">
 				<path style="fill:#00ff00;fill-rule:evenodd"
 					d="M145.69,206.75L119.66,206.75L119.66,184.88L145.69,184.88z" />
 			</a></g>
-		<g id="ToolTip" visibility="hidden" opacity="0" transform="translate(0,0)">
-			<rect id="ToolTipShadow" opacity="0.20" fill="black" stroke="none" x="0" y="0" width="30" height="8" />
-			<rect id="ToolTipBG" fill="#ffffe1" stroke="black" x="0" y="0" width="30" height="8" /><text
-				xml:space="preserve" id="ToolTipText" fill="black" x="0" y="0" width="30" height="8">tooltip</text>
-		</g>
 	</g>
 </svg>
