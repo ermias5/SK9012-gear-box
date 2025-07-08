@@ -1,45 +1,157 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="297mm" height="210mm"
-	viewBox="0 0 297 210" stroke-linejoin="round" stroke-linecap="round" fill="none" fill-rule="evenodd">
-	<desc>Corrected Animation with YouTube Video</desc>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="297.000mm" height="210.000mm" viewBox="0.000000 0.000000 297.000000 210.000000" stroke-linejoin="round" stroke-linecap="round" fill="none" fill-rule="evenodd"><desc>Composer Export</desc><script type="text/ecmascript"><![CDATA[
+if(typeof(top) != "undefined")
+{
+	top.ShowPaper = ShowPaper;
+}
+function ShowHotSpot(evt,hotspotid)
+{
+	var svgDocument = evt.target.ownerDocument;
+	var strId = "hotspot."+hotspotid;
+	var hotspot = svgDocument.getElementById(strId);
+	if(hotspot)
+		hotspot.setAttribute("opacity",".5");
+}
+function HideHotSpot(evt,hotspotid)
+{
+	var svgDocument = evt.target.ownerDocument;
+	var strId = "hotspot."+hotspotid;
+	var hotspot = svgDocument.getElementById(strId);
+	if(hotspot)
+		hotspot.setAttribute("opacity","0");
 
-	<g>
-		<!-- Blue rectangle with text -->
-		<g>
-			<path style="stroke:#0000ff;stroke-width:0.125;fill:#0000ff"
-				d="M107.65,3.65L162.92,3.65L162.92,13.80L107.65,13.80z" />
-			<text xml:space="preserve" fill="#ffffff" stroke-width="0" x="108.92" y="10.63" font-size="6.55"
-				opacity="1.00" font-family="Eurostile">ANIMATION VIDEO</text>
-		</g>
-		<!-- Video container -->
-		<g>
-			<!-- Border -->
-			<!-- <rect x="43.74" y="46.7" width="200" height="125" rx="8" ry="8" fill="none" stroke="#0066cc"
-				stroke-width="1.5" /> -->
+	var toolTip = svgDocument.getElementById('ToolTip');
+	if(toolTip)
+		toolTip.setAttribute("visibility","hidden");
+}
+function ShowToolTip(evt,hotspotid,strTooltip)
+{
+	if(strTooltip=="")
+	return;
 
-			<!-- YouTube embed -->
-			<foreignObject x="43.74" y="46.7" width="200" height="125"
-				requiredExtensions="http://www.w3.org/1999/xhtml">
+	// change text
+	var svgDocument = evt.target.ownerDocument;
+	var tiptext = svgDocument.getElementById('ToolTipText');
+	if( !tiptext )
+	return;
+	tiptext.firstChild.nodeValue = " " + strTooltip + "  " ;
 
-				<body xmlns="http://www.w3.org/1999/xhtml"
-					style="margin:0;padding:0;width:100%;height:100%;overflow:hidden;">
-					<iframe width="100%" height="100%" style="border:none;"
-						src="https://www.youtube.com/embed/DxZ9Q0JHALE?modestbranding=1&amp;rel=0&amp;autohide=1"
-						allowfullscreen="allowfullscreen"></iframe>
-				</body>
-			</foreignObject>
+	// show tooltip before, else some refresh issue
 
-		</g>
+	var toolTip = svgDocument.getElementById('ToolTip');
+	if(!toolTip)
+	return;
 
-		<!-- Home button -->
-		<g id="hotspot.0" ident="home_button" onmouseover="evt.target.setAttribute('opacity','.8')"
-			onmouseout="evt.target.setAttribute('opacity','.5')" opacity=".5">
-			<a xlink:href="home.svg" xlink:title="redirect to home page">
-				<path style="fill:#0066ff;stroke:#003399;stroke-width:0.5;cursor:pointer" d="M131.13,179.98 h33.45 a5,5 0 0 1 5,5 v20.69
-                 a5,5 0 0 1 -5,5 h-33.45 a5,5 0 0 1 -5,-5 v-20.69
-                 a5,5 0 0 1 5,-5 z" />
-			</a>
-		</g>
+	toolTip.setAttribute("visibility","visible");
+	toolTip.setAttribute("opacity",".95");
 
-	</g>
-</svg>
+	// move tooltip
+	// get viewbox
+
+	var root = svgDocument.documentElement;
+	var vbox = (root.getAttribute("viewBox")).split(' ');
+	var x0 = parseFloat(vbox[0]);
+	var y0 = parseFloat(vbox[1]);
+	var vboxW = parseFloat(vbox[2]);
+	var vboxH = parseFloat(vbox[3]);
+
+	// get default width of svg
+
+	var strW = root.getAttribute("width");
+	var svgW = parseFloat(strW);
+	if(strW.indexOf('mm') != -1)
+	svgW *= 3.779;
+
+	var strH = root.getAttribute("height");
+	var svgH = parseFloat(strH);
+	if(strH.indexOf('mm') != -1)
+	svgH *= 3.779;  	// 96 dpi  -> 96/25.4 = 3.779
+
+	// update the viewbox / width / height if svg is embedded in html with zoom fit all
+	var realx0 = x0;
+	var realy0 = y0;
+	var realvboxW = vboxW;
+	var realvboxH = vboxH;
+	var realsvgW = svgW;
+	var realsvgH = svgH;
+
+	if ((typeof(top) == "undefined") || (typeof(top.svgctl1) != "undefined")) // embedded in html
+	{
+		// get window size in pxl
+
+		svgW = window.innerWidth;
+		svgH = window.innerHeight;
+
+		// calculate real viewbox
+
+		realsvgW = svgW;
+		realsvgH = svgH;
+		if((svgW / svgH) > (vboxW / vboxH))
+		{
+			realvboxW = (vboxH * svgW) / svgH;
+			realvboxH = vboxH;
+			realx0 = x0 - (realvboxW - vboxW)/2 ;
+		}
+		else
+		{
+			realvboxH = (vboxW * svgH) / svgW;
+			realvboxW = vboxW;
+			realy0 = y0 - (realvboxH - vboxH)/2 ;
+		}
+	}
+
+	// get user zoom/pan
+
+	var newScale = root.currentScale;
+	var translation = root.currentTranslate;
+
+	// transform pxl to user unit
+
+	var xPos = (((evt.clientX+10- translation.x)/newScale) * realvboxW)/realsvgW  + realx0 ;
+	var yPos = (((evt.clientY+5- translation.y)/newScale) * realvboxH)/ realsvgH  + realy0 ;
+	var scaleForWidth = ( (1 / newScale) * realvboxH) / realsvgH;
+
+	// move tooltip
+
+	toolTip.setAttribute("transform", "translate(" + xPos + "," + yPos + ")" );
+
+	// resize tooltip
+
+	var fontsize = 12;
+	tiptext.setAttribute("font-size",fontsize*scaleForWidth);
+	tiptext.setAttribute("y", fontsize*scaleForWidth);
+	var tipBG = svgDocument.getElementById('ToolTipBG');
+	var outline = tiptext.getBBox();
+	if(tipBG)
+	{
+		tipBG.setAttribute("stroke-width", 1*scaleForWidth);
+		tipBG.setAttribute("width", Number(outline.width) );
+		tipBG.setAttribute("height", Number(outline.height) + fontsize*.5*scaleForWidth );
+	}
+	var ToolTipShadow = svgDocument.getElementById('ToolTipShadow');
+	if(ToolTipShadow)
+	{
+		ToolTipShadow.setAttribute("width", Number(outline.width) );
+		ToolTipShadow.setAttribute("height", Number(outline.height) + fontsize*.5*scaleForWidth );
+		ToolTipShadow.setAttribute("x", 3*scaleForWidth);
+		ToolTipShadow.setAttribute("y", 3*scaleForWidth);
+	}
+}
+function ShowPaper()
+{
+  var svgDocument = getDocument();
+  var paper = svgDocument.getElementById("paperID");
+  if(paper)
+  {
+    paper.setAttribute("transform","scale(1)");
+    paper.setAttribute("opacity","1");
+    paper.setAttribute("visibility","visible");
+  }
+  var svg = svgDocument.getRootElement();
+  if(svg)
+  {
+    svg.setAttribute("width","307.000mm");
+    svg.setAttribute("height","220.000mm");
+    svg.setAttribute("viewBox","-5.000000 -5.000000 307.000000 220.000000");
+  }
+}
+]]></script><defs><mask id="mask0" x="0" y="0" height="100%" width="100%"><image x="119.479599" y="184.460388" height="22.331610" width="26.178770" xlink:href="animation_files/8fab7c03db17c982_mask_0.jpg"/></mask></defs><g><g/><g><g/><g><path style="stroke:#0000ff;stroke-width:0.125;fill:#0000ff" d="M107.65,3.65L162.92,3.65L162.92,13.80L107.65,13.80z"/><text xml:space="preserve" fill="#ffffff" stroke-width="0" x="108.92" y="10.63" font-size="6.55" opacity="1.00" font-family="Eurostile">ANIMATION VIDEO </text></g></g><g><g/><g><image x="119.479599" y="184.460388" height="22.331610" width="26.178770" xlink:href="animation_files/8fab7c03db17c982_image_0.jpg" mask="url(#mask0)"/></g></g><g><g/><g><image x="43.742512" y="38.676472" height="135.558807" width="203.110397" xlink:href="animation_files/8fab7c03db17c982_image_1.jpg"/></g></g><g id="paperID" visibility="hidden" opacity="0.00" transform="scale(0.000100)"><path style="stroke:#000000;stroke-width:0.500;fill:#e6e6e6;fill-rule:evenodd" d="M-2000.00,-2000.00L2297.00,-2000.00L2297.00,2210.00L-2000.00,2210.00zM0.00,0.00L297.00,0.00L297.00,210.00L0.00,210.00z"/><path style="fill:#000000;fill-opacity:0.118" d="M3.00,210.00L297.00,210.00L297.00,3.00L300.00,3.00L300.00,213.00L3.00,213.00z"/></g><g id="hotspot.0" ident="" onmouseover="ShowHotSpot(evt,&apos;0&apos;)" onmouseout="HideHotSpot(evt,&apos;0&apos;)" onmousemove="ShowToolTip(evt,&apos;0&apos;,&quot;ICON&quot;)" opacity="0"><a xlink:href="C:\Users\Lenovo\AppData\Local\Temp\SK9012_HELICAL_BEVEL_smg\home.svg"><path style="fill:#00ff00;fill-rule:evenodd" d="M145.69,206.75L119.66,206.75L119.66,184.88L145.69,184.88z"/></a></g><g id="hotspot.1" ident="" onmouseover="ShowHotSpot(evt,&apos;1&apos;)" onmouseout="HideHotSpot(evt,&apos;1&apos;)" onmousemove="ShowToolTip(evt,&apos;1&apos;,&quot; 2&quot;)" opacity="0"><a xlink:href="ANIMATION.MP4"><path style="fill:#00ff00;fill-rule:evenodd" d="M246.71,174.46L43.89,174.46L43.89,39.10L246.71,39.10z"/></a></g><g id="ToolTip" visibility="hidden" opacity="0" transform="translate(0,0)"><rect id="ToolTipShadow" opacity="0.20" fill="black" stroke="none" x="0" y="0" width="30" height="8"/><rect id="ToolTipBG" fill="#ffffe1" stroke="black" x="0" y="0" width="30" height="8"/><text xml:space="preserve" id="ToolTipText" fill="black" x="0" y="0" width="30" height="8">tooltip</text></g></g></svg>
