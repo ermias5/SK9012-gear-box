@@ -222,7 +222,7 @@ function ShowPaper()
 		</g>
 
 		<g id="hotspot.0" ident="" onmouseover="ShowHotSpot(evt,&apos;0&apos;)"
-			onmouseout="HideHotSpot(evt,&apos;0&apos;)" onmousemove="ShowToolTip(evt,&apos;0&apos;,&quot;ICON&quot;)"
+			onmouseout="HideHotSpot(evt,&apos;0&apos;)"
 			opacity="0"><a xlink:href="home.svg">
 				<path style="fill:#00ff00;fill-rule:evenodd"
 					d="M145.69,206.75L119.66,206.75L119.66,184.88L145.69,184.88z" />
