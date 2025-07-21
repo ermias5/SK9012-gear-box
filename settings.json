@@ -1,0 +1,11 @@
+{
+  // Prevent auto-formatting SVG files to avoid text scattering
+  // Optional: Prevent word wrap in SVG files
+  "[svg]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
+    "editor.wordWrap": "off"
+  },
+  // Optional: Always use UTF-8 encoding
+  "files.encoding": "utf8"
+}

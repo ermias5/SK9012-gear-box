@@ -5,23 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK9012 GEARBOX/MOTOR</title>
     <style>
+        @font-face {
+          font-family: 'Eurostile';
+          src: url('resources/fonts/Eurostile.woff2') format('woff2'),
+               url('resources/fonts/Eurostile.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
         body {
-          font-family: Eurostile;
+          font-family: 'Eurostile', Arial, sans-serif;
           background: #f4f4f4;
           margin: 0;
           padding: 0;
           height: 150vh;
           overflow-x: hidden;
         }
-        h1 {
-          background:blue;
+        .header {
+          background:  #0E38EC;
           color: #fff;
           margin: 0;
-          padding: 1rem;
-          text-align: center;
-          font-family: Eurostile;
+          padding: 1rem 2rem;
+          font-family: 'Eurostile', Arial, sans-serif;
           font-size: 1.5rem;
           overflow: hidden;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 1rem;
+        }
+        .header-logo {
+          height: 48px;
+          width: auto;
+          vertical-align: middle;
+        }
+        .company-name {
+          font-size: 1.3rem;
+          font-weight: bold;
+          letter-spacing: 1px;
+          margin-top: 4px;
+        }
+        .header-title {
+          display: block;
+          font-size: 1rem;
+          font-weight: normal;
+          margin-top: 2px;
         }
         .main-card {
           background: #fff;
@@ -56,55 +83,6 @@
           max-height: 100%;
           display: block;
         }
-        /* .thumbnails {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1.5rem;
-          margin: 2rem auto;
-          max-width: 1200px;
-          overflow-x: auto;
-        } */
-        /* .thumb {
-          background: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          padding: 0.5rem;
-          width: 140px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          transition: transform 0.2s, box-shadow 0.2s;
-          border: none;
-          cursor: pointer;
-        }
-        .thumb:hover {
-          transform: translateY(-4px) scale(1.04);
-          box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-        .thumb-preview {
-          width: 120px;
-          height: 90px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #fafafa;
-          border: 1px solid #eee;
-          border-radius: 4px;
-          margin-bottom: 0.5rem;
-          overflow: hidden;
-        }
-        .thumb-preview object {
-          width: 100%;
-          height: 100%;
-        }
-        .thumb-title {
-          font-size: .9rem;
-          text-align: center;
-          color: #007acc;
-          text-decoration: none;
-          margin: 0;
-        } */
         @media (max-width: 900px) {
           .main-card {
             padding: 1rem;
@@ -144,50 +122,16 @@
     </style>
 </head>
 <body>
-    <h1>Bevel Gearbox/motor details</h1>
+    <div class="header">
+        <img src="resources/img/logo.png" alt="Fluent Conveyors" class="header-logo" />
+        <span class="company-name">Fluent Conveyors</span>
+    </div>
     <div class="main-card">
         <div class="main-preview" id="mainPreview">
             <object id="mainObject" type="image/svg+xml" data="home.svg"></object>
         </div>
     </div>
-    <!-- <div class="thumbnails">
-        <button class="thumb" onclick="swapSVG('INPUTSHAFT.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="INPUTSHAFT.svg"></object>
-            </div>
-            <div class="thumb-title">INPUTSHAFT.svg</div>
-        </button>
-        <button class="thumb" onclick="swapSVG('OUTPUTGEAR.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="OUTPUTGEAR.svg"></object>
-            </div>
-            <div class="thumb-title">OUTPUTGEAR.svg</div>
-        </button>
-        <button class="thumb" onclick="swapSVG('ANIMATION.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="ANIMATION.svg"></object>
-            </div>
-            <div class="thumb-title">ANIMATION.svg</div>
-        </button>
-        <button class="thumb" onclick="swapSVG('BEVEL.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="BEVEL.svg"></object>
-            </div>
-            <div class="thumb-title">BEVEL.svg</div>
-        </button>
-        <button class="thumb" onclick="swapSVG('BOM.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="BOM.svg"></object>
-            </div>
-            <div class="thumb-title">BOM.svg</div>
-        </button>
-        <button class="thumb" onclick="swapSVG('GEARBOXSECTIONS.svg')">
-            <div class="thumb-preview">
-                <object type="image/svg+xml" data="GEARBOXSECTIONS.svg"></object>
-            </div>
-            <div class="thumb-title">GEARBOXSECTIONS.svg</div>
-        </button>
-    </div> -->
+    <div class="header-title">Bevel Gearbox/motor details</div>
     <script>
       function swapSVG(svgFile) {
         const mainObject = document.getElementById('mainObject');
