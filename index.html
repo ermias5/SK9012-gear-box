@@ -29,9 +29,9 @@
           font-size: 1.5rem;
           overflow: hidden;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: flex-start;
-          gap: 1rem;
+          gap: 15rem;
         }
         .header-logo {
           height: 48px;
@@ -39,15 +39,15 @@
           vertical-align: middle;
         }
         .company-name {
-          font-size: 1.3rem;
+          font-size: 1rem;
           font-weight: bold;
           letter-spacing: 1px;
           margin-top: 4px;
         }
         .header-title {
           display: block;
-          font-size: 1rem;
-          font-weight: normal;
+          font-size: 1.1rem;
+          font-weight: bold;
           margin-top: 2px;
         }
         .main-card {
@@ -123,15 +123,17 @@
 </head>
 <body>
     <div class="header">
+      <div>
         <!-- <img src="resources/img/logo.png" alt="Fluent Conveyors" class="header-logo" /> -->
         <span class="company-name">Fluent Conveyors</span>
+      </div>
+      <div class="header-title">Bevel Gearbox/motor details</div>
     </div>
     <div class="main-card">
         <div class="main-preview" id="mainPreview">
             <object id="mainObject" type="image/svg+xml" data="home.svg"></object>
         </div>
     </div>
-    <div class="header-title">Bevel Gearbox/motor details</div>
     <script>
       function swapSVG(svgFile) {
         const mainObject = document.getElementById('mainObject');
